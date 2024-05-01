@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 
 # Configure the API key
-genai.configure(api_key="YOUR_API_KEY")
+genai.configure(api_key="")
 
 # Set up the model
 generation_config = {

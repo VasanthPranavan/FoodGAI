@@ -20,7 +20,7 @@
                 <h2>Your AI Health and Diet Expert</h2>
                 <div class="row">
                     <div class="col-md-6 mx-auto"> <!-- Add mx-auto class for centering -->
-                        <form method="post" enctype="multipart/form-data" id="uploadForm">
+                        <form method="post" enctype="multipart/form-data" id="uploadForm" onsubmit="return validateForm()">
                             <!-- Drag and drop zone -->
                             <div class="drop-zone" id="dropZone">
                                 <span>Drag &amp; Drop Image Here or Click to Upload</span>
@@ -33,6 +33,7 @@
                             <div class="mb-3">
                                 <label for="dietaryPreferences" class="form-label">Dietary Preferences</label>
                                 <select class="form-select" id="dietaryPreferences" name="dietaryPreferences" required>
+                                    <option value="">Select</option>
                                     <option value="Vegetarian">Vegetarian</option>
                                     <option value="Vegan">Vegan</option>
                                     <option value="Gluten-free">Gluten-free</option>
@@ -40,6 +41,14 @@
                                 </select>
                             </div>
                             <input type="submit" value="Generate Recipe" class="btn btn-primary"> <!-- Added btn and btn-primary classes for Bootstrap styling -->
+                            <div id="errorMessage" style="color: red; display: none;">Please fill out all fields.</div>
+                            <!-- Loader -->
+                            <div id="loader-container" style="display: none; text-align: center;">
+                                <div id="loader" class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; margin-top: 1rem;">
+                                    <!-- <span class="visually-hidden">Loading...</span> -->
+                                </div>
+                                <p>Creating a recipe from your photo......</p>
+                            </div>
                         </form>
                         <!-- Image preview area -->
                         <div id="imagePreview" class="text-center"></div>
@@ -103,6 +112,19 @@
                 }
                 reader.readAsDataURL(file);
             }
+        }
+
+        // Function to validate the form
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const dietaryPreferences = document.getElementById('dietaryPreferences').value;
+            if (!name || !dietaryPreferences) {
+                document.getElementById('errorMessage').style.display = 'block';
+                return false;
+            }
+            // Show loader
+            document.getElementById('loader-container').style.display = 'block';
+            return true;
         }
     </script>
 </body>
