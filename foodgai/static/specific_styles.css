@@ -1,0 +1,37 @@
+/* Specific styles from index.html */
+
+body {
+    background-image: url("/static/images/Food1.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white; /* Set text color to white for better visibility */
+}
+
+.content-wrapper {
+    background-color: rgba(0, 0, 0, 0.5); /* Add background overlay with opacity */
+    padding: 20px; /* Add padding for better readability */
+    border-radius: 10px; /* Add border radius */
+    margin-top: 100px; /* Add space above the title */
+}
+
+.service-card {
+    border: 1px solid #ced4da; /* Add border */
+    border-radius: 10px; /* Add border radius */
+    transition: box-shadow 0.3s ease; /* Add transition */
+    height: 100%; /* Ensure cards have the same height */
+}
+
+.service-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow on hover */
+}
+
+.service-card .card-body {
+    cursor: pointer; /* Add pointer cursor */
+    height: 100%; /* Ensure card bodies have the same height */
+}
+
+footer {
+    position: fixed; /* Set footer position to fixed */
+    bottom: 0; /* Align footer to bottom */
+    width: 100%; /* Set footer width to full */
+}

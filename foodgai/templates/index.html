@@ -14,7 +14,7 @@
       color: white; /* Set text color to white for better visibility */
     }
     .content-wrapper {
-      background-color: rgba(0, 0, 0, 0.5); /* Add background overlay with opacity */
+      background-color: rgba(199, 31, 31, 0.5); /* Add background overlay with opacity */
       padding: 20px; /* Add padding for better readability */
       border-radius: 10px; /* Add border radius */
       margin-top: 100px; /* Add space above the title */
@@ -42,38 +42,11 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">FoodGAI</a>
-      <!-- Add toggler icon for mobile navigation -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Navbar links -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="dietplan.html">Personalized Meal Plans</a> <!-- Updated href attribute -->
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#community">Community</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  {% include 'index_header.html' %}
 
   <!-- Main Content -->
   <div class="container content-wrapper">
+    
     <header class="text-center">
       <h1 class="mt-5">Welcome to FoodGAI</h1>
       <p class="lead">Your Virtual Health and Diet Expert</p>
@@ -105,7 +78,7 @@
           </a>
         </div>
         <div class="col-md-4">
-          <a href="/index2" class="text-decoration-none"> <!-- Make the card clickable -->
+          <a href="/captureCook" class="text-decoration-none"> <!-- Make the card clickable -->
             <div class="card service-card mb-4">
               <div class="card-body">
                 <h3 class="card-title">Capture and Cook</h3>
