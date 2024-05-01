@@ -109,17 +109,32 @@ modelVision = genai.GenerativeModel(
 @app.route("/captureCook", methods=["GET", "POST"])
 def captureCook():
     if request.method == 'POST':
+
+         # Check if a file is uploaded
+        if 'image' not in request.files:
+            return render_template('captureCook.html', error="No image uploaded")
+        
+        image = request.files['image']
+        
+        # Check if the file is empty
+        if image.filename == '':
+            return render_template('captureCook.html', error="No image selected")
+        
+        # Save the file to a temporary location
+        filename = secure_filename(image.filename)
+        image_path = Path("uploads") / filename
+        image.save(image_path)
     
 
-        image_path = Path("image.jpeg")
-        image_part = {
-            "mime_type": "image/jpeg",
-            "data": image_path. read_bytes()
-        }
+        # image_path = Path("image.jpeg")
+        # image_part = {
+        #     "mime_type": "image/jpeg",
+        #     "data": image_path. read_bytes()
+        # }
 
         prompt_parts = [
-            "You are AI chef and diet expert. Your name is Chef. FoodGAI. The patient has uploaded the an image of the ingregients they have. You need to create a recipe based on the avaialble incredients in the imae.and asked for diet plan. Based on the below details respond starting to welcome them and introduce yourself,  Provide the recipe and instrutions.\n\n Name: Sruthi \nDietary Preferences: vegetarian:\n The response should be in HTML code and bootstrap class for good styling. Use nice colors for fonts ",
-            image_part
+            "You are AI chef and diet expert. Your name is Chef. FoodGAI. The patient has uploaded the an image of the ingregients they have. You need to create a recipe based on the avaialble incredients in the image. Based on the below details respond starting to welcome them and introduce yourself,  Provide the recipe and instrutions.\n\n Name: Sruthi \nDietary Preferences: vegetarian:\n The response should be in HTML code and bootstrap class for good styling. Use nice colors for fonts ",
+            {"mime_type": "image/jpeg", "data": image_path.read_bytes()}
         ]    
 
        # print(prompt_parts.text)
@@ -133,39 +148,6 @@ def captureCook():
         return render_template('captureCook.html', formatted_sections=formatted_sections)
     
     return render_template('captureCook.html')
-
-
-            
-
-@app.route('/index2', methods=['GET', 'POST'])
-def index2():
-    if request.method == 'POST':
-        
-
-
-
-
-        image_path = Path("image.jpeg")
-        image_part = {
-            "mime_type": "image/jpeg",
-            "data": image_path. read_bytes()
-        }
-
-        prompt_parts = [
-            "You are AI chef and diet expert. Your name is Chef. FoodGAI. The patient has uploaded the an image of the ingregients they have. You need to create a recipe based on the avaialble incredients in the imae.and asked for diet plan. Based on the below details respond starting to welcome them and introduce yourself,  Provide the recipe and instrutions.\n\n Name: Sruthi \nDietary Preferences: vegetarian:\n",
-            image_part
-        ]    
-
-       # print(prompt_parts.text)
-
-        # Generate content
-        result = modelVision.generate_content(prompt_parts)   
-        print(result.text)
-        generated_text = result.text
-            
-        return render_template('index2.html', generated_text=generated_text)
-    
-    return render_template('index2.html')
 
 
 
