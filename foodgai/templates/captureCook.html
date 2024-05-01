@@ -22,6 +22,21 @@
         .content {
             flex: 1;
         }
+        .drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .drop-zone.highlight {
+            border-color: #2185d0;
+        }
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -33,22 +48,77 @@
                 <h2>Your AI Health and Diet Expert</h2>
                 <div class="row">
                     <div class="col-md-6 mx-auto"> <!-- Add mx-auto class for centering -->
-                        <form method="post" enctype="multipart/form-data">
-                            <!-- Input form section -->
-                            <div class="mb-3">
-                                <label for="image">Upload Image:</label>
-                                <input type="file" id="image" name="image" accept="image/*" required class="form-control"> <!-- Added form-control class for Bootstrap styling -->
+                        <form method="post" enctype="multipart/form-data" id="uploadForm">
+                            <!-- Drag and drop zone -->
+                            <div class="drop-zone" id="dropZone">
+                                <span>Drag &amp; Drop Image Here or Click to Upload</span>
+                                <input type="file" id="image" name="image" accept="image/*" style="display: none;"> <!-- Hidden input for file upload -->
                             </div>
                             <input type="submit" value="Generate Recipe" class="btn btn-primary"> <!-- Added btn and btn-primary classes for Bootstrap styling -->
                         </form>
+                        <!-- Image preview area -->
+                        <div id="imagePreview" class="text-center"></div>
                     </div>
                 </div>
+                {% if formatted_sections %}
+                        <div class="generated-text">
+                            <h2>Generated Receipe based on the Photo you uploaded:</h2>
+                            <p>{{ formatted_sections | safe }}</p>
+                        </div>
+                        {% endif %}
             </div>
         </div>
         {% include 'footer.html' %}
     </div>
     <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-zGSFn1IEf8A+TqG0kXJO7yD6qStK0OvVfko0pqOvGR7L3ZzpJ8QZeNJvM2ivKkfD" crossorigin="anonymous"></script>
-    
+    <script>
+        // JavaScript for drag and drop functionality
+        const dropZone = document.getElementById('dropZone');
+        const uploadForm = document.getElementById('uploadForm');
+        const fileInput = document.getElementById('image');
+        const imagePreview = document.getElementById('imagePreview');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('highlight');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            const file = e.dataTransfer.files[0];
+            fileInput.files = e.dataTransfer.files;
+            displayImage(file);
+        });
+
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            displayImage(file);
+        });
+
+        // Function to display the uploaded image in the preview area
+        function displayImage(file) {
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('preview-image');
+                    imagePreview.innerHTML = '';
+                    imagePreview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 </html>
