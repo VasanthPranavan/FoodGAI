@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodGAI - Your Virtual Health and Diet Expert</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Add your custom CSS styles here */
+    body {
+      background-image: url("/static/images/Food1.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white; /* Set text color to white for better visibility */
+    }
+    .content-wrapper {
+      background-color: rgba(0, 0, 0, 0.5); /* Add background overlay with opacity */
+      padding: 20px; /* Add padding for better readability */
+      border-radius: 10px; /* Add border radius */
+      margin-top: 100px; /* Add space above the title */
+    }
+    .service-card {
+      border: 1px solid #ced4da; /* Add border */
+      border-radius: 10px; /* Add border radius */
+      transition: box-shadow 0.3s ease; /* Add transition */
+      height: 100%; /* Ensure cards have the same height */
+    }
+    .service-card:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow on hover */
+    }
+    .service-card .card-body {
+      cursor: pointer; /* Add pointer cursor */
+      height: 100%; /* Ensure card bodies have the same height */
+    }
+    footer {
+      position: fixed; /* Set footer position to fixed */
+      bottom: 0; /* Align footer to bottom */
+      width: 100%; /* Set footer width to full */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">FoodGAI</a>
+      <!-- Add toggler icon for mobile navigation -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dietplan.html">Personalized Meal Plans</a> <!-- Updated href attribute -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#community">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container content-wrapper">
+    <header class="text-center">
+      <h1 class="mt-5">Welcome to FoodGAI</h1>
+      <p class="lead">Your Virtual Health and Diet Expert</p>
+    </header>
+    
+    <!-- About Section -->
+    <section id="about" class="my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center"> <!-- Center the content -->
+          <!-- No need for image here since it's set as background -->
+          <h2>Why FoodGAI?</h2>
+          <p>Are you looking to revolutionize your approach to health and nutrition? Say hello to FoodGAI, your virtual health and diet expert. Whether you're striving for weight loss, muscle gain, or simply aiming for a healthier lifestyle, FoodGAI is here to guide you every step of the way.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="my-5">
+      <h2 class="text-center mb-4">What We Offer</h2>
+      <div class="row justify-content-center"> <!-- Center the content -->
+        <div class="col-md-4">
+          <a href="/dietplan" class="text-decoration-none"> <!-- Make the card clickable -->
+            <div class="card service-card mb-4">
+              <div class="card-body">
+                <h3 class="card-title">Personalized Meal Plans</h3>
+                <p class="card-text">Tailored to your dietary needs, preferences, and goals.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="/index2" class="text-decoration-none"> <!-- Make the card clickable -->
+            <div class="card service-card mb-4">
+              <div class="card-body">
+                <h3 class="card-title">Capture and Cook</h3>
+                <p class="card-text">Don't know what to cook today? Take a picture of your ingredients and get your personal recipe right now.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Community Section -->
+    <section id="community" class="my-5">
+      <h2 class="text-center mb-4">Join the FoodGAI Community</h2>
+      <p class="text-center">Become part of a vibrant community of health enthusiasts. Share your journey, exchange tips, and support each other along the way.</p>
+      <div class="text-center">
+        <a href="#" class="btn btn-primary">Get Started</a>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <!-- <section id="contact" class="my-5">
+      <h2 class="text-center mb-4">Connect With Us</h2>
+      <div class="text-center">
+        <!-- Add social media icons or links here -->
+      </div>
+    </section> -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <p>&copy; 2024 FoodGAI. All Rights Reserved.</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+        <li class="list-inline-item"><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
