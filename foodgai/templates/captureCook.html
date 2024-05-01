@@ -26,6 +26,19 @@
                                 <span>Drag &amp; Drop Image Here or Click to Upload</span>
                                 <input type="file" id="image" name="image" accept="image/*" style="display: none;"> <!-- Hidden input for file upload -->
                             </div>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dietaryPreferences" class="form-label">Dietary Preferences</label>
+                                <select class="form-select" id="dietaryPreferences" name="dietaryPreferences" required>
+                                    <option value="Vegetarian">Vegetarian</option>
+                                    <option value="Vegan">Vegan</option>
+                                    <option value="Gluten-free">Gluten-free</option>
+                                    <option value="None">None</option>
+                                </select>
+                            </div>
                             <input type="submit" value="Generate Recipe" class="btn btn-primary"> <!-- Added btn and btn-primary classes for Bootstrap styling -->
                         </form>
                         <!-- Image preview area -->
@@ -34,7 +47,7 @@
                 </div>
                 {% if formatted_sections %}
                         <div class="generated-text">
-                            <h2>Generated Receipe based on the Photo you uploaded:</h2>
+                            <h2>Generated Recipe based on the Photo you uploaded:</h2>
                             <p>{{ formatted_sections | safe }}</p>
                         </div>
                         {% endif %}

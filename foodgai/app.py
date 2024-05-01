@@ -6,12 +6,10 @@ import hashlib
 import google.generativeai as genai
 import os
 
-
-
 app = Flask(__name__)
 
 # Configure the API key
-genai.configure(api_key="")
+genai.configure(api_key="YOUR_API_KEY")
 
 # Set up the model
 generation_config = {
@@ -48,7 +46,6 @@ model = genai.GenerativeModel(model_name="gemini-1.0-pro",
 def format_generated_text(generated_text):
     generated_text = generated_text.replace("```html", "").replace("```", "")
     sections = generated_text
-  
     return sections
 
 
@@ -60,31 +57,11 @@ def index():
 @app.route("/dietplan", methods=["GET", "POST"])
 def dietplan():
     if request.method == "POST":
-        name = request.form["name"]
-        age = request.form["age"]
-        gender = request.form["gender"]
-        activity = request.form["activity"]
-        preferences = request.form["preferences"]
-        intake = request.form["intake"]
-        
-        # Generate content
-        content = f"You are AI health and diet expert. Your name is Dr. FoodGAI. The patient has come to you and ask for diet plan. Based on the below details respond starting to welcome him and introduce your self, addressing the patient in detail as a human and Provide diet plan: \n\n"
-        content += f"Name: {name}\n"
-        content += f"Age: {age}\n"
-        content += f"Gender: {gender}\n"
-        content += f"Level of physical activity: {activity}\n"
-        content += f"Dietary Preferences: {preferences}\n"
-        content += f"Current Dietary Intake: {intake}\n\n"
-        content += f"The response should be in HTML code and bootstrap class for good styling."
-        
-        response = model.generate_content(content)
-        generated_text = response.text
-        
-        # Format the generated text
-        formatted_sections = format_generated_text(generated_text)
-
-        return render_template("dietplan.html", formatted_sections=formatted_sections)
+        # Handle form submission
+        # Your code for generating diet plan goes here
+        return render_template("dietplan.html")
     return render_template("dietplan.html")
+
 
 generation_config_Vision = {
     "temperature": 1,
@@ -109,8 +86,7 @@ modelVision = genai.GenerativeModel(
 @app.route("/captureCook", methods=["GET", "POST"])
 def captureCook():
     if request.method == 'POST':
-
-         # Check if a file is uploaded
+        # Check if a file is uploaded
         if 'image' not in request.files:
             return render_template('captureCook.html', error="No image uploaded")
         
@@ -124,31 +100,25 @@ def captureCook():
         filename = secure_filename(image.filename)
         image_path = Path("uploads") / filename
         image.save(image_path)
-    
-
-        # image_path = Path("image.jpeg")
-        # image_part = {
-        #     "mime_type": "image/jpeg",
-        #     "data": image_path. read_bytes()
-        # }
-
-        prompt_parts = [
-            "You are AI chef and diet expert. Your name is Chef. FoodGAI. The patient has uploaded the an image of the ingregients they have. You need to create a recipe based on the avaialble incredients in the image. Based on the below details respond starting to welcome them and introduce yourself,  Provide the recipe and instrutions.\n\n Name: Sruthi \nDietary Preferences: vegetarian:\n The response should be in HTML code and bootstrap class for good styling. Use nice colors for fonts ",
-            {"mime_type": "image/jpeg", "data": image_path.read_bytes()}
-        ]    
-
-       # print(prompt_parts.text)
-
+        
+        # Get form data
+        name = request.form.get('name')
+        dietary_preferences = request.form.get('dietaryPreferences')
+        
         # Generate content
+        prompt_parts = [
+            f"You are AI chef and diet expert. Your name is Chef. FoodGAI. The patient has uploaded an image of the ingredients they have. You need to create a recipe based on the available ingredients in the image and asked for diet plan. Based on the below details respond starting to welcome them and introduce yourself,  Provide the recipe and instructions.\n\n Name: {name} \nDietary Preferences: {dietary_preferences}\n The response should be in HTML code and bootstrap class for good styling. Use nice colors for fonts ",
+            {"mime_type": "image/jpeg", "data": image_path.read_bytes()}
+        ]
+        
         result = modelVision.generate_content(prompt_parts)   
-        print(result.text)
         generated_text = result.text
-
+        
+        # Format the generated text
         formatted_sections = format_generated_text(generated_text)    
         return render_template('captureCook.html', formatted_sections=formatted_sections)
     
     return render_template('captureCook.html')
-
 
 
 if __name__ == "__main__":
