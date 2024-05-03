@@ -11,7 +11,7 @@ html, body {
     flex-direction: column;
 }
 body {
-    background-image: url("/static/images/Food3.jpg");
+    background-image: url("/static/images/Food21.jpg");
     background-size: cover;
     background-position: center;
     color: white; /* Set text color to white for better visibility */

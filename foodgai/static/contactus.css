@@ -1,0 +1,31 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    background-image: url("/static/images/Food15.webp");
+    background-size: cover;
+    background-position: center;
+    color: white; /* Set text color to white for better visibility */
+}
+.content {
+    flex: 1;
+    
+    /* background-color: rgba(60, 116, 15, 0.274);  */
+    /* Add background overlay with opacity */
+}
+.content-wrapper {
+    background-color: rgba(61, 60, 60, 0.753); /* Add background overlay with opacity */
+    padding: 20px; /* Add padding for better readability */
+    border-radius: 10px; /* Add border radius */
+    margin-top: 100px; /* Add space above the title */
+}
+
