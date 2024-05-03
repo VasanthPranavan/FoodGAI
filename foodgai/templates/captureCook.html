@@ -9,17 +9,28 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/capturecook_style.css">
-    
+    <style>
+        .center-content {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 90px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
         {% include 'header.html' %}
         <div class="content">
             <div class="container">
-                <h1>FoodGAI</h1>
-                <h2>Your AI Health and Diet Expert</h2>
+                <br>
                 <div class="row">
-                    <div class="col-md-6 mx-auto"> <!-- Add mx-auto class for centering -->
+                    <div class="col-md-8 mx-auto center-content "> <
+                        <h1>FoodGAI</h1>
+                <h2>Your AI Chef and Diet Expert</h2>
+                <br>
+                <h6>Dr. Food GAI, our resident AI dietician just needs know what you have in front of you! Just click a picture and updaload it in the drop box. Dr. Food GAI will save you the trouble of making a decision time and just tell you what you can make!</h6>
+
+                <br>
                         <form method="post" enctype="multipart/form-data" id="uploadForm" onsubmit="return validateForm()">
                             <!-- Drag and drop zone -->
                             <div class="drop-zone" id="dropZone">

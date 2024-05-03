@@ -5,7 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FoodGAI - Your Virtual Health and Diet Expert</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+  <style>
+    
+    .service-card {
+      border: none;
+      border-radius: 10px;
+      background-color: #f8f9fa; /* Card background color */
+      padding: 20px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Card shadow */
+    }
+
+    .service-card .card-title {
+      font-size: 24px;
+      color: #333; /* Title color */
+    }
+
+    .service-card .card-text {
+      color: #666; /* Text color */
+    }
+
+    .service-icon {
+      font-size: 40px;
+      color: #007bff; /* Icon color */
+    }
+  </style>
 </head>
 <body>
 
@@ -24,48 +50,43 @@
     <section id="about" class="my-5">
       <div class="row justify-content-center">
         <div class="col-md-6 text-center"> <!-- Center the content -->
-          <!-- No need for image here since it's set as background -->
+          
           <h2>Why FoodGAI?</h2>
           <p>Are you looking to revolutionize your approach to health and nutrition? Say hello to FoodGAI, your virtual health and diet expert. Whether you're striving for weight loss, muscle gain, or simply aiming for a healthier lifestyle, FoodGAI is here to guide you every step of the way.</p>
         </div>
       </div>
     </section>
     
-    <!-- Services Section -->
     <section id="services" class="my-5">
       <h2 class="text-center mb-4">What We Offer</h2>
       <div class="row justify-content-center"> <!-- Center the content -->
         <div class="col-md-4">
-          <a href="/dietplan" class="text-decoration-none"> <!-- Make the card clickable -->
+          <a href="/dietplan" class="text-decoration-none"> 
             <div class="card service-card mb-4">
-              <div class="card-body">
+              <div class="card-body text-center">
+                <i class="fas fa-utensils service-icon"></i> <!-- Icon -->
                 <h3 class="card-title">Personalized Meal Plans</h3>
-                <p class="card-text">Tailored to your dietary needs, preferences, and goals.</p>
+                <p class="card-text">Make Meal planning easy by just answering a few questions! Dr. Food GAI will curate a meal plan just for you based on all your needs and requirements. Sounds easy right? That’s because it is!</p>
               </div>
             </div>
           </a>
         </div>
         <div class="col-md-4">
-          <a href="/captureCook" class="text-decoration-none"> <!-- Make the card clickable -->
+          <a href="/captureCook" class="text-decoration-none"> 
             <div class="card service-card mb-4">
-              <div class="card-body">
-                <h3 class="card-title">Capture and Cook</h3>
-                <p class="card-text">Don't know what to cook today? Take a picture of your ingredients and get your personal recipe right now.</p>
+              <div class="card-body text-center">
+                <i class="fas fa-camera service-icon"></i> <!-- Icon -->
+                <h3 class="card-title">Click and Cook</h3>
+                <p class="card-text">No more ordering in food just because you don’t know what to make anymore (Its OK, we’ve all been there - It happens!) Dr. Food GAI can help you out!  Just upload a pic of the ingredients you have and get a recipe immediately! </p>
               </div>
             </div>
           </a>
         </div>
       </div>
     </section>
+
     
-    <!-- Community Section -->
-    <section id="community" class="my-5">
-      <h2 class="text-center mb-4">Join the FoodGAI Community</h2>
-      <p class="text-center">Become part of a vibrant community of health enthusiasts. Share your journey, exchange tips, and support each other along the way.</p>
-      <div class="text-center">
-        <a href="#" class="btn btn-primary">Get Started</a>
-      </div>
-    </section>
+   
     
     <!-- Contact Section -->
     <!-- <section id="contact" class="my-5">
@@ -76,8 +97,9 @@
     </section> -->
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white py-4">
+ 
+
+  <footer class="bg-dark text-white py-0 fixed-bottom"> 
     <div class="container text-center">
       <p>&copy; 2024 FoodGAI. All Rights Reserved.</p>
       <ul class="list-inline">
@@ -87,6 +109,11 @@
       </ul>
     </div>
   </footer>
+  
+  
+  
+</footer>
+
 
   <!-- Bootstrap Scripts -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -94,3 +121,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+

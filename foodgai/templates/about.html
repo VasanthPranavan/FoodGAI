@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodGAI</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z5vIOI8y3j2kwpCUFn4KxtDD0agLFByhXv+ew0" crossorigin="anonymous">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/diet_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-X+gE1BcZwvSklbkDD0Ic+/gqg7wJOpGV6kZPaA4fUtuLBWJwveW2sI35Z/p8gyVzfPnQ0AFVB9oAY6LrT8CEhw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Custom CSS for Loader -->
+    <style>   
+        .center-content {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding-top: 150px; 
+            padding-bottom: 150px;
+   
+            border-radius: 50px;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        {% include 'header.html' %}
+        <div class="content">
+            <div class="container">
+                <br>
+                <div class="row">
+                    
+                    <div class="col-md-10 mx-auto center-content"> 
+                        
+                       
+                        <div class="content">
+                            <div class="container">
+                                <h2>About FoodGAI</h2>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><i class="material-icons">group</i> User-Centric Experience: FoodGAI prioritizes user experience, offering intuitive interfaces and easy-to-follow meal plans. Users can customize their profiles, provide feedback, and adjust their plans, ensuring a seamless and personalized experience.</p>
+                                        <p><i class="material-icons">check_circle</i> Comprehensive Meal Plans: FoodGAI provides comprehensive meal plans tailored to individual preferences, dietary restrictions, and health goals. Whether you're aiming for weight loss, muscle gain, or simply maintaining a healthy lifestyle, FoodGAI creates customized plans to help you achieve your goals.</p>
+                                        <p><i class="material-icons">trending_up</i> Data-Driven Insights: Leveraging advanced algorithms and data analytics, FoodGAI offers valuable insights into your nutritional intake and progress. Track your macros, calories, and nutrient intake effortlessly, empowering you to make informed decisions about your diet and health.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><i class="material-icons">lightbulb</i> Continued Innovation: Since its inception, FoodGAI has been dedicated to innovation and excellence. Our team of nutritionists, dietitians, and developers work tirelessly to introduce new features, refine existing functionalities, and integrate the latest nutritional research into the platform.</p>
+                                        <p><i class="material-icons">chat</i> Supportive Community: Join a vibrant community of health enthusiasts on FoodGAI. Share your journey, exchange tips, and seek support from like-minded individuals. Connect with fellow users, participate in discussions, and embark on your health and wellness journey together.</p>
+                                        <p><i class="material-icons">lock</i> Privacy and Security: At FoodGAI, we prioritize the privacy and security of our users' data. Rest assured that your personal information and dietary preferences are kept confidential and secure. We adhere to stringent privacy policies and employ robust security measures to safeguard your data.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                
+                    </div>
+
+                    <!-- <div class="col-md-6">
+                       
+                        {% if formatted_sections %}
+                        <div class="generated-text">
+                            <h2>Generated Diet Plan:</h2>
+                            <p>{{ formatted_sections | safe }}</p>
+                        </div>
+                        {% endif %}
+                    </div> -->
+                </div>
+                
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-zGSFn1IEf8A+TqG0kXJO7yD6qStK0OvVfko0pqOvGR7L3ZzpJ8QZeNJvM2ivKkfD" crossorigin="anonymous"></script>
+    <!-- Custom JS for Loader -->
+    
+</body>
+</html>

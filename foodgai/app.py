@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 
 # Configure the API key
-genai.configure(api_key="")
+genai.configure(api_key="AIzaSyAy7hXB5dLwoYfBYbOQs5Pdq0LruxZxmrA")
 
 # Set up the model
 generation_config = {
@@ -53,6 +53,12 @@ def format_generated_text(generated_text):
 def index():
     return render_template("index.html")
 
+@app.route("/about", methods=["GET"])
+def about():
+    return render_template("about.html")
+@app.route("/contactus", methods=["GET"])
+def contactus():
+    return render_template("contactus.html")
 
 @app.route("/dietplan", methods=["GET", "POST"])
 def dietplan():
@@ -80,6 +86,7 @@ def dietplan():
         # content += f"Current Dietary Intake: {intake}\n\n"
         content += f"The response should be in HTML code and bootstrap class for good styling."
 
+        print(content) 
         response = model.generate_content(content)
         generated_text = response.text
 
