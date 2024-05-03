@@ -57,9 +57,40 @@ def index():
 @app.route("/dietplan", methods=["GET", "POST"])
 def dietplan():
     if request.method == "POST":
-        # Handle form submission
-        # Your code for generating diet plan goes here
-        return render_template("dietplan.html")
+        name = request.form["name"]
+        age = request.form["age"]
+        height = request.form["height"]
+        weight = request.form["weight"]
+        gender = request.form["gender"]
+        activity = request.form["activity"]
+        preferences = request.form["preferences"]
+        goal = request.form["goal"]
+        #intake = request.form["intake"]
+
+        # Generate content
+        content = f"You are AI health and diet expert. Your name is Dr. FoodGAI. The patient has come to you and ask for diet plan. Based on the below details respond starting to welcome him and introduce your self, addressing the patient in detail as a human and Provide diet plan: \n\n"
+        content += f"Name: {name}\n"
+        content += f"Age: {age}\n"
+        content += f"Height: {height}\n"
+        content += f"Weight: {weight}\n"
+        content += f"Gender: {gender}\n"
+        content += f"Level of physical activity: {activity}\n"
+        content += f"Dietary Preferences: {preferences}\n"
+        content += f"Goal: {goal}\n"
+        # content += f"Current Dietary Intake: {intake}\n\n"
+        content += f"The response should be in HTML code and bootstrap class for good styling."
+
+        response = model.generate_content(content)
+        generated_text = response.text
+
+        
+        # Format the generated text
+        formatted_sections = format_generated_text(generated_text)
+        print(formatted_sections)
+
+
+        return render_template("dietplan_result.html", formatted_sections=formatted_sections)
+ 
     return render_template("dietplan.html")
 
 
@@ -107,7 +138,7 @@ def captureCook():
         
         # Generate content
         prompt_parts = [
-            f"You are AI chef and diet expert. Your name is Chef. FoodGAI. The patient has uploaded an image of the ingredients they have. You need to create a recipe based on the available ingredients in the image and asked for diet plan. Based on the below details respond starting to welcome them and introduce yourself,  Provide the recipe and instructions.\n\n Name: {name} \nDietary Preferences: {dietary_preferences}\n The response should be in HTML code and bootstrap class for good styling. Use nice colors for fonts ",
+            f"You are AI chef and diet expert. Your name is Chef. FoodGAI. The patient has uploaded an image of the ingredients they have. You need to create a recipe based on the available ingredients in the image. Based on the below details respond starting to welcome them and introduce yourself,  Provide the recipe and instructions.\n\n Name: {name} \nDietary Preferences: {dietary_preferences}\n The response should be in HTML code and bootstrap class for good styling. ",
             {"mime_type": "image/jpeg", "data": image_path.read_bytes()}
         ]
         
@@ -116,7 +147,7 @@ def captureCook():
         
         # Format the generated text
         formatted_sections = format_generated_text(generated_text)    
-        return render_template('captureCook.html', formatted_sections=formatted_sections)
+        return render_template('captureCook_result.html', formatted_sections=formatted_sections)
     
     return render_template('captureCook.html')
 

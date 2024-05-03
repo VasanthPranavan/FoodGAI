@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    
 }
 .wrapper {
     min-height: 100%;
@@ -10,4 +11,7 @@ html, body {
 }
 .content {
     flex: 1;
+    /* background-color: rgba(60, 116, 15, 0.274);  */
+    /* Add background overlay with opacity */
 }
+
